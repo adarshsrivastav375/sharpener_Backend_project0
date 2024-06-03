@@ -3,6 +3,7 @@ const fs = require("fs");
 const requestHandler = (req, res) => {
   const method = req.method;
   const url = req.url;
+  res.setHeader("Content-Type", "text/html");
   if (url === "/") {
     fs.readFile("message.txt", "utf8", (err, data) => {
       if (err) {
@@ -32,7 +33,6 @@ const requestHandler = (req, res) => {
       });
     });
   } else {
-    res.setHeader("Content-Type", "text/html");
     res.write(" <html> ");
     res.write("<head><title> first-server-page </title></head>");
     res.write(" <body><h1>welcome to node app </h1></body>");
